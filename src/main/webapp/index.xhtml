@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="200"><h:outputText value="LOGO!! BUKING!!!"/></p:layoutUnit>
+            <p:layoutUnit position="south" size="200"><h:outputText value="Footeris,  BUKING!!!"/></p:layoutUnit>
+            <p:layoutUnit position="west" size="200">
+                <h:outputText value="Kreisa puse!! BUKING!!!"/>
+                <h:form>
+                    <p:menu>
+                        <p:submenu label="Galvena izvelne">
+                            <p:menuitem value="Lietotaja registracija" actionListener="#{webutils.pageUserreg()}" update=":refPanel"/>
+                            <p:menuitem value="test" actionListener="#{webutils.pageTest2()}" update=":refPanel"/>
+                            <p:menuitem value="userreg" actionListener="#{webutils.pageUserreg()}" update=":refPanel"/>
+                        </p:submenu>
+
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="200" id="eastPanel"> <h:outputText value="#{webutils.page}"/>  <h:outputText value="Laba puse!! BUKING!!!"/></p:layoutUnit>
+            <p:layoutUnit position="center">
+                <h:form id="refPanel">
+                    <!--<p:panel id="refPanel">-->
+                        <ui:include src="#{webutils.page}.xhtml"/>
+                        <h:outputText value="#{webutils.page}"/> 
+                    <!--</p:panel>-->
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="200"><h:outputText value="LOGO!! BUKING!!!"/></p:layoutUnit>
+            <p:layoutUnit position="south" size="200"><h:outputText value="Footeris,  BUKING!!!"/></p:layoutUnit>
+            <p:layoutUnit position="west" size="200"><h:outputText value="Kreisa puse!! BUKING!!!"/>
+                <h:form id="menushka">
+                <p:menu>
+                    <p:submenu label="Mail">
+                        <p:menuitem value="Lietotaja registracija" actionListener="#{webutils.setPage('text')}"  update=":centerPanel" />
+                        <p:menuitem value="Lietotaja registracija" url="http://www.google.com" update=":centerPanel"/>
+                        <p:menuitem value="Hotmail" url="http://www.hotmail.com" />
+                        <p:menuitem value="Yahoo Mail" url="http://mail.yahoo.com" />
+                    </p:submenu>
+                    <p:submenu label="Videos">
+                        <p:menuitem value="Youtube" url="http://www.youtube.com" />
+                        <p:menuitem value="Break" url="http://www.break.com" />
+                        <p:menuitem value="Metacafe" url="http://www.metacafe.com" />
+                    </p:submenu>
+                    <p:submenu label="Social Networks">
+                        <p:menuitem value="Facebook" url="http://www.facebook.com" />
+                        <p:menuitem value="MySpace" url="http://www.myspace.com" />
+                    </p:submenu>
+                </p:menu>
+                    </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="200"><h:outputText value="Laba puse!! BUKING!!!"/></p:layoutUnit>
+            <p:layoutUnit position="center" id="centerPanel">
+                <h:form id="UserRegistrationForm">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Lietotaja vards:"/>
+                        <p:inputText value="#{BukingController.username}" required="true"/>
+                        <h:outputText value="Vards"/>
+                        <p:inputText value="#{BukingController.name}"/>
+                        <h:outputText value="Uzvards:"/>
+                        <p:inputText value="#{BukingController.surname}"/>
+                        <h:outputText value="Kreditkartes numurs:"/>
+                        <p:inputText value="#{BukingController.creditCardNr}"/>
+                        <h:outputText value="Adrese:"/>
+                        <p:inputText value="#{BukingController.address}"/>
+                        <h:outputLabel for="pwd1" value="Parole: *" />  
+                        <p:password id="pwd1" value="#{BukingController.password}" match="pwd2" label="Parole:" required="true"/>  
+                        <h:outputLabel for="pwd2" value="Parole velreiz: *" />  
+                        <p:password id="pwd2" value="#{BukingController.password}" label="Parole velreiz:" required="true"/> 
+                    </h:panelGrid>
+                    <p:commandButton value="Pieregistreties" actionListener="#{BukingController.createUser()}" update=":UserRegistrationForm"/>
+                </h:form>
+                <h:form id="formahotels">
+                    <p:dataTable var="hotels" value="#{HotelController.hotelTable}" id="viesnicas">
+                        <p:column headerText="Pilseta"><h:outputText value="#{hotels.hotelCity}"/></p:column>
+                        <p:column headerText="Nosaukums"><h:outputText value="#{hotels.hotelName}"/></p:column>
+                    </p:dataTable>
+                    <h:outputText value="Pilseta:"/>
+                    <p:inputText value="#{HotelController.hotelCity}"/>
+                    <h:outputText value="Nosaukums:"/>
+                    <p:inputText value="#{HotelController.hotelName}"/>
+                    <p:commandButton value="Meklet" update=":formahotels:viesnicas"/>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
